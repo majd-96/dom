@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Who will pay</title>
+    <style></style>
+</head>
+
+<body>
+    <div id="controldiv"></div>
+
+    <div id="detailsDiv"></div>
+
+    <h1 id="Result">....</h1>
+
+
+    <script>
+        Btn1 = document.createElement("button");
+        Btn1.setAttribute("id", "Btn1");
+        Btn1.innerHTML = "Add Frind ";
+        Btn1.addEventListener("click", AddNewTxtBox);
+        document.getElementById("controldiv").appendChild(Btn1);
+
+        Btn2 = document.createElement("button");
+        Btn2.setAttribute("id", "Btn2");
+        Btn2.innerHTML = "Choose One! ";
+        Btn2.addEventListener("click", ChooseOne);
+        document.getElementById("controldiv").appendChild(Btn2);
+
+        function AddNewTxtBox() {
+            let txtbox = document.createElement("input");
+            txtbox.setAttribute("type", "text");
+            txtbox.setAttribute("placeholder", "Enter Name" + " " +
+                document.getElementById("detailsDiv").children.length);
+            document.getElementById("detailsDiv").appendChild(txtbox);
+
+        }
+
+        function ChooseOne() {
+            let allelem = document.getElementsByTagName("input");
+            let name = [];
+            for (let i = 0; i < allelem.length; i++) {
+                if (allelem[i].getAttribute("type") == "text");
+                name.push(allelem[i].value);
+            }
+            console.log(name);
+
+            let randomNumber = Math.floor(Math.random() * name.length);
+            document.getElementById("Result").innerHTML = name[randomNumber];
+
+        }
+    </script>
+</body>
+
+</html>
